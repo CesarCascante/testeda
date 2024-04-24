@@ -1,0 +1,26 @@
+---
+- name: Events from Windows AD
+
+  hosts: all
+  sources:
+   - ansible.eda.kafka:
+       host: 172.31.235.50
+       port: 9092
+       topic: logs
+
+  rules:
+   - name: AD Account Change
+     condition: event.body.winlog.event_id == "4722"
+     action:
+       run_job_template:
+        organization: "Default"
+        name: "Windows AD Events"
+
+   - name: Security Event
+     condition: event.body.message is search("The Windows Firewall service")
+     action:
+       run_job_template:
+        organization: "Default"
+        name: "Windows Enhanced Ticket"
+
+
