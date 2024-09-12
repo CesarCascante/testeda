@@ -12,7 +12,7 @@
       - name: Launch playbook on start command
         condition: event.payload.command == 'start'
         action:
-           run_playbook:
-               name: playbook.yml
-               extra_vars:
-                   eventSource: "{{ eventSource }}" 
+           run_job_template:
+             organization: "Default"
+             name: "Eda Playbook"
+             eventSource: "{{ eventSource }}" 
