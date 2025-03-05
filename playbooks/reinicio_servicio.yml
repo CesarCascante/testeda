@@ -15,4 +15,4 @@
 
     - name: Imprime resultado.
       debug: 
-        msg: "El servicio quedo en estado: {{ result_service.stdout }}"
+        msg: "El servicio quedo en estado: {{ result_service.state }}"
