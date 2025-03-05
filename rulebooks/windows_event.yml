@@ -1,6 +1,4 @@
----
 - name: Events from Windows AD
-
   hosts: all
   sources:
    - ansible.eda.kafka:

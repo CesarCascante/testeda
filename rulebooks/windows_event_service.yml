@@ -1,0 +1,15 @@
+- name: Events from Windows.
+  hosts: all
+  sources:
+   - name: Webhook
+     ansible.eda.webhook:
+       host: 0.0.0.0
+       port: 5000
+
+  rules:
+   - name: Inicializa el servicio windows. 
+     condition: event.body.winlog.event_id == "4722"
+     action:
+       run_job_template:
+        organization: "Default"
+        name: "windows_inicializa_servicio"

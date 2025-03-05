@@ -1,0 +1,18 @@
+---
+- name: Reinicio de servicio Windows. 
+  hosts: all
+  tasks: 
+    
+    - name: Reinicio de servicio.
+      ansible.windows.win_service:
+        name: "{{ service_problem }}"
+        state: started
+
+    - name: Valida estado de servicio.
+      ansible.windows.win_service:
+        name: "{{ service_problem }}"
+      register: result_service    
+
+    - name: Imprime resultado.
+      debug: 
+        msg: "El servicio quedo en estado: {{ result_service.stdout }}"
