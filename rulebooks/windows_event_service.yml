@@ -8,7 +8,7 @@
 
   rules:
    - name: Inicializa el servicio windows. 
-     condition: event.body.issue.service == "not available"
+     condition: event.issue.service == "not available"
      action:
        run_job_template:
         organization: "Default"
