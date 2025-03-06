@@ -12,7 +12,7 @@
       condition: event.payload is defined
       action:
         debug:
-          msg: "{{ event }}"
+          msg: "Cesar: {{ event }}"
 
     - name: Inicializa el servicio windows. 
       condition: event.payload.issue.service == "not available"
