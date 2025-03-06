@@ -8,11 +8,17 @@
 
   rules:
 
-    - name: Debug event
-      condition: event.payload is defined
+    # - name: Debug event
+    #   condition: event.payload is defined
+    #   action:
+    #     debug:
+    #       msg: "Cesar: {{ event }}"
+
+    - name: Print message
+      condition: event.payload.issue.service == "not available"
       action:
         debug:
-          msg: "Cesar: {{ event }}"
+          msg: "Service not available detected!"
 
     - name: Inicializa el servicio windows. 
       condition: event.payload.issue.service == "not available"
