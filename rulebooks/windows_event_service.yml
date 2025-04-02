@@ -8,11 +8,11 @@
 
   rules:
 
-    # - name: Debug event
-    #   condition: event.payload is defined
-    #   action:
-    #     debug:
-    #       msg: "Cesar: {{ event }}"
+     - name: Debug event
+       condition: event.payload is defined
+       action:
+         debug:
+           msg: "Cesar: {{ event }}"
 
     - name: Print message
       condition: event.payload.issue.service == "not available"
