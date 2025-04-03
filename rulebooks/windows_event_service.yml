@@ -9,7 +9,7 @@
   rules:
 
      - name: Debug event
-       condition: payload is defined
+       condition: event.payload is defined
        action:
          debug:
            msg: "Cesar: {{ event }}"
