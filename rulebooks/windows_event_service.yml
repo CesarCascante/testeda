@@ -8,11 +8,11 @@
 
   rules:
 
-     - name: Debug event
-       condition: event is defined
-       action:
-         debug:
-           msg: "Cesar: {{ event }}"
+    - name: Captura todos los eventos
+      condition: true
+      action:
+        debug:
+          msg: "Evento genérico: {{ event }}"
 
     - name: Print message
       condition: event.payload.issue.service == "not available"
