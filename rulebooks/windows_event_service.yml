@@ -1,3 +1,4 @@
+---
 - name: Events from Windows.
   hosts: all
   sources:
