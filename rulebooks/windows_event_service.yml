@@ -9,17 +9,17 @@
 
   rules:
 
-    - name: Captura todos los eventos
-      condition: true
-      action:
-        debug:
-          msg: "Evento genérico: {{ event }}"
+    # - name: Captura todos los eventos
+    #   condition: true
+    #   action:
+    #     debug:
+    #       msg: "Evento genérico: {{ event }}"
 
-    - name: Print message
-      condition: event.payload.issue.service == "not available"
-      action:
-        debug:
-          msg: "Service not available detected!"
+    # - name: Print message
+    #   condition: event.payload.issue.service == "not available"
+    #   action:
+    #     debug:
+    #       msg: "Service not available detected!"
 
     - name: Inicializa el servicio windows. 
       condition: true
