@@ -1,0 +1,5 @@
+SN_USERNAME: cecascante
+SN_PASSWORD: "s>kS-<Oa,rq}sQV]y5Gd0dAkb}gxNJtAu>Eww,cgi(}Xu0HP96zt4.:<yo,"
+SN_HOST: https://dev319687.service-now.com/
+servidor: "ApplicationServerHelpdesk"  # Nombre del servidor a buscar
+#cambio_sys_id: "c83c5e5347c12200e0ef563dbb9a7190"  # sys_id del cambio (CHG)

@@ -1,0 +1,24 @@
+---
+- name: Creacion de incidente en servicenow.
+  hosts: all 
+  collections:
+    - servicenow.itsm
+    - servicenow 
+  vars_files:
+    - vars/vars.yml
+  tasks: 
+
+    - name: Create incident
+      servicenow.itsm.incident:
+        instance:
+          host: "{{ SN_HOST }}"
+          username: "{{ SN_USERNAME }}"
+          password: "{{ SN_PASSWORD }}"
+        caller: "{{ SN_USERNAME }}"
+        state: new
+        short_description: Demostración EDA ansible
+        description: Caso EDA ansible 
+        impact: Low
+        urgency: Low
+      delegate_to: localhost
+      register: incidente
