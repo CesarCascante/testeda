@@ -20,7 +20,7 @@
       register: incident_response
 
     - name: Mostrar la respuesta de la actualización
-      debug:
+      ansible.builtin.debug:
         var: incident_response
 
     - name: Cambiar estado
