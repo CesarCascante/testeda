@@ -11,9 +11,9 @@
     - name: Actualizar incidente en ServiceNow
       servicenow.itsm.incident:
         instance:
-          host: https://dev282469.service-now.com/
-          username: "{{ username }}"
-          password: "{{ password }}"
+          host: "{{ SN_HOST }}"
+          username: "{{ SN_USERNAME }}"
+          password: "{{ SN_PASSWORD }}"
         state: present
         number: "{{ numero_incidente }}"
         short_description: "Me encuentro revisando el incidente prueba"
@@ -26,18 +26,18 @@
     - name: Cambiar estado
       servicenow.itsm.incident:
         instance:
-          host: https://dev282469.service-now.com/
-          username: "{{ username }}"
-          password: "{{ password }}"
+          host: "{{ SN_HOST }}"
+          username: "{{ SN_USERNAME }}"
+          password: "{{ SN_PASSWORD }}"
         state: in_progress
         number: "{{ numero_incidente }}"
 
     - name: Cerrar incidente
       servicenow.itsm.incident:
         instance:
-          host: https://dev282469.service-now.com/
-          username: "{{ username }}"
-          password: "{{ password }}"
+          host: "{{ SN_HOST }}"
+          username: "{{ SN_USERNAME }}"
+          password: "{{ SN_PASSWORD }}"
         state: closed
         number: "{{ numero_incidente }}"
         close_code: "Solution provided"
