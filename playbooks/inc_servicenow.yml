@@ -1,6 +1,6 @@
 ---
 - name: Creacion de incidente en servicenow.
-  hosts: all 
+  hosts: localhost 
   collections:
     - servicenow.itsm
     - servicenow 
