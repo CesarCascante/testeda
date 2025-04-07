@@ -30,8 +30,10 @@
           username: "{{ SN_USERNAME }}"
           password: "{{ SN_PASSWORD }}"
         #state: in_progress
-        incident_state: "2"
+        state: update
         number: "{{ numero_incidente }}"
+        other:
+          incident_state: "2"
 
     - name: Cerrar incidente
       servicenow.itsm.incident:
@@ -39,8 +41,9 @@
           host: "{{ SN_HOST }}"
           username: "{{ SN_USERNAME }}"
           password: "{{ SN_PASSWORD }}"
-        #state: closed
-        incident_state: "7"
+        state: update
         number: "{{ numero_incidente }}"
         close_code: "Solution provided"
         close_notes: "Se atiende el incidente de prueba y se procede a cerrar para la demo"
+        other:
+          incident_state: "7"
