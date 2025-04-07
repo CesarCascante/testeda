@@ -1,6 +1,7 @@
 ---
 - name: Creacion de incidente en servicenow.
   hosts: localhost 
+  gather_facts: false  
   collections:
     - servicenow.itsm
     - servicenow 

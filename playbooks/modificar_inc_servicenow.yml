@@ -1,6 +1,7 @@
 ---
 - name: Modifica y cierra el incidente en servicenow.
   hosts: localhost 
+  gather_facts: false
   collections:
     - servicenow.itsm
     - servicenow 
@@ -14,9 +15,8 @@
           host: "{{ SN_HOST }}"
           username: "{{ SN_USERNAME }}"
           password: "{{ SN_PASSWORD }}"
-        state: present
         number: "{{ numero_incidente }}"
-        short_description: "Me encuentro revisando el incidente prueba"
+        short_description: "222 Me encuentro revisando el incidente prueba"
       register: incident_response
 
     - name: Mostrar la respuesta de la actualización
@@ -29,7 +29,8 @@
           host: "{{ SN_HOST }}"
           username: "{{ SN_USERNAME }}"
           password: "{{ SN_PASSWORD }}"
-        state: in_progress
+        #state: in_progress
+        incident_state: "2"
         number: "{{ numero_incidente }}"
 
     - name: Cerrar incidente
@@ -38,7 +39,8 @@
           host: "{{ SN_HOST }}"
           username: "{{ SN_USERNAME }}"
           password: "{{ SN_PASSWORD }}"
-        state: closed
+        #state: closed
+        incident_state: "7"
         number: "{{ numero_incidente }}"
         close_code: "Solution provided"
         close_notes: "Se atiende el incidente de prueba y se procede a cerrar para la demo"
