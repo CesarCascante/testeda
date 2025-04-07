@@ -1,0 +1,44 @@
+---
+- name: Modifica y cierra el incidente en servicenow.
+  hosts: localhost 
+  collections:
+    - servicenow.itsm
+    - servicenow 
+  vars_files:
+    - vars/vars.yml
+  tasks: 
+
+    - name: Actualizar incidente en ServiceNow
+      servicenow.itsm.incident:
+        instance:
+          host: https://dev282469.service-now.com/
+          username: "{{ username }}"
+          password: "{{ password }}"
+        state: present
+        number: "{{ numero_incidente }}"
+        short_description: "Me encuentro revisando el incidente prueba"
+      register: incident_response
+
+    - name: Mostrar la respuesta de la actualización
+      debug:
+        var: incident_response
+
+    - name: Cambiar estado
+      servicenow.itsm.incident:
+        instance:
+          host: https://dev282469.service-now.com/
+          username: "{{ username }}"
+          password: "{{ password }}"
+        state: in_progress
+        number: "{{ numero_incidente }}"
+
+    - name: Cerrar incidente
+      servicenow.itsm.incident:
+        instance:
+          host: https://dev282469.service-now.com/
+          username: "{{ username }}"
+          password: "{{ password }}"
+        state: closed
+        number: "{{ numero_incidente }}"
+        close_code: "Solution provided"
+        close_notes: "Se atiende el incidente de prueba y se procede a cerrar para la demo"
