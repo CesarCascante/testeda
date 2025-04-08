@@ -9,20 +9,6 @@
     - vars/vars.yml
   tasks: 
 
-    - name: Actualizar incidente en ServiceNow
-      servicenow.itsm.incident:
-        instance:
-          host: "{{ SN_HOST }}"
-          username: "{{ SN_USERNAME }}"
-          password: "{{ SN_PASSWORD }}"
-        number: "{{ numero_incidente }}"
-        short_description: "222 Me encuentro revisando el incidente prueba"
-      register: incident_response
-
-    - name: Mostrar la respuesta de la actualización
-      ansible.builtin.debug:
-        var: incident_response
-
     - name: Cambiar estado
       servicenow.itsm.incident:
         instance:
@@ -31,7 +17,7 @@
           password: "{{ SN_PASSWORD }}"
         #state: in_progress
         state: update
-        number: "{{ numero_incidente }}"
+        number: "{{ num_incidente }}"
         other:
           incident_state: "2"
 
@@ -42,8 +28,9 @@
           username: "{{ SN_USERNAME }}"
           password: "{{ SN_PASSWORD }}"
         state: update
-        number: "{{ numero_incidente }}"
+        number: "{{ num_incidente }}"
         close_code: "Solution provided"
-        close_notes: "Se atiende el incidente de prueba y se procede a cerrar para la demo"
+        close_notes: "Se atiende el incidente de prueba y se procede a cerrar para la demo, estado final del servicio {{ estado_final_servicio }}"
         other:
           incident_state: "7"
+      when: estado_final_servicio == "running"

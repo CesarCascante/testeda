@@ -1,6 +1,3 @@
 SN_USERNAME: cecascante
 SN_PASSWORD: "D_:J0u}$8an&}dV(xtF!KNhM^z$yb86YjHsqkm2ea08I>[r!Axq4_}T9-&O^y:m]:(KOuO?8W"
 SN_HOST: https://dev270334.service-now.com/
-servidor: "ApplicationServerHelpdesk"  # Nombre del servidor a buscar
-#cambio_sys_id: "c83c5e5347c12200e0ef563dbb9a7190"  # sys_id del cambio (CHG)
-numero_incidente: "INC0010001"

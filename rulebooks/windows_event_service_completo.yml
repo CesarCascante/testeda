@@ -9,18 +9,23 @@
 
   rules:
 
-    # - name: Print message
-    #   condition: event.payload.issue.service == "not available"
+    # - name: Inicializa el servicio windows. 
+    #   condition: event.payload.issue.service == "not available" and event.payload.issue.state == "OPEN"
     #   action:
-    #     debug:
-    #       msg: "Service not available detected!"
+    #     run_job_template:
+    #       organization: "Default"
+    #       name: "windows_inicializa_servicio"
+    #       job_args:
+    #         extra_vars:
+    #           vm_name: "{{ event.payload.issue.fqdn }}"
+    #           service_problem: "AnyDesk"
 
     - name: Inicializa el servicio windows. 
       condition: event.payload.issue.service == "not available" and event.payload.issue.state == "OPEN"
       action:
-        run_job_template:
+        run_workflow_template:
           organization: "Default"
-          name: "windows_inicializa_servicio"
+          name: "flow_windows_inicializa_servicio"
           job_args:
             extra_vars:
               vm_name: "{{ event.payload.issue.fqdn }}"

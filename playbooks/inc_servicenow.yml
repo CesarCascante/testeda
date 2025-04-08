@@ -17,11 +17,14 @@
           password: "{{ SN_PASSWORD }}"
         caller: "{{ SN_USERNAME }}"
         state: new
-        short_description: Demostración EDA ansible
-        description: Caso EDA ansible 
+        short_description: Demostración EDA ansible caida de servicio "{{ service_problem }}".
+        description: Caso EDA ansible caida de servicio "{{ service_problem }}".
         impact: Low
         urgency: Low
       delegate_to: localhost
       register: incidente
 
+    - name: Almacenamos variables importantes.
+      ansible.builtin.set_stats:
+        num_incidente: "{{ incidente.record.number }}"
     

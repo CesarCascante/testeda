@@ -14,5 +14,9 @@
       register: result_service    
 
     - name: Imprime resultado.
-      debug: 
+      ansible.builtin.debug: 
         msg: "El servicio quedo en estado: {{ result_service.state }}"
+
+    - name: Almacenamos variables importantes.
+      ansible.builtin.set_stats:
+        estado_final_servicio: "{{ result_service.state }}"
