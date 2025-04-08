@@ -1,6 +1,6 @@
 ---
 - name: Reinicio de servicio Windows. 
-  hosts: all
+  hosts: "{{ vm_name }}"
   tasks: 
     
     - name: Reinicio de servicio.
