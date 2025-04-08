@@ -26,5 +26,6 @@
 
     - name: Almacenamos variables importantes.
       ansible.builtin.set_stats:
-        num_incidente: "{{ incidente.record.number }}"
+        data:      
+          num_incidente: "{{ incidente.record.number }}"
     

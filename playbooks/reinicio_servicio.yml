@@ -19,4 +19,5 @@
 
     - name: Almacenamos variables importantes.
       ansible.builtin.set_stats:
-        estado_final_servicio: "{{ result_service.state }}"
+        data:      
+          estado_final_servicio: "{{ result_service.state }}"
